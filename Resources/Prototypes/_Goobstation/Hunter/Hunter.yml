@@ -1,0 +1,34 @@
+- type: antag
+  id: Hunter
+  name: roles-antag-hunter-name
+  antagonist: true
+  setPreference: false
+  objective: roles-antag-hunter-objective
+  guides: [ Hunter ]
+
+#Figure out some dumshit way to start with microbomb implant and destroy gear on death (forced acidifer?)
+
+#Hunter Gear
+- type: startingGear
+  id: HunterGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHunter #Just a suit? No fucking armor?
+    back: #SS13 gives none... Give something if malding fitting gear
+    mask: ClothingMaskHunter #According to SS13, this shit is a breath mask, thermal AND night vision, and a fucking voice changer in one.
+    head: #Wiki shows none?
+    eyes: #None?
+    gloves: #None?
+    outerClothing: #Seriously they have all these slots? Do they just steal shit in SS13?
+    shoes: ClothingShoesHunterCowboy #Premium Galoshes
+    id: #Does it need an ID? Will pry doors anyways, but realistically should they have an empty slot just to yoink ids and invalidate that?
+    ears: #Give them all comms for funni voice changer shit, or just force them to steal?
+    pocket1: HunterCloaking #Do we even have syndi cloak device? Or is it stealthsuit shit?
+    pocket2: 
+    belt: TrophyBelt
+  inhand:
+    - JetpackBlackFilled
+  storage:
+    back: #Figure out a way to store all the fucking gear with space for skulls in belt, only add back storage if fucking malding.
+    #- HunterSpear
+    #- HunterRifle
+    #- HunterCloaking
