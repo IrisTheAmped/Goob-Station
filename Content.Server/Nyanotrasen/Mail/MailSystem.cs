@@ -1,8 +1,14 @@
 // SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
+// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+// SPDX-FileCopyrightText: 2025 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
 // SPDX-FileCopyrightText: 2025 SX_7 <sn1.test.preria.2002@gmail.com>
+// SPDX-FileCopyrightText: 2025 Tim <timfalken@hotmail.com>
+// SPDX-FileCopyrightText: 2025 Timfa <timfalken@hotmail.com>
+// SPDX-FileCopyrightText: 2025 Tom <t.jans@student.fontys.nl>
+// SPDX-FileCopyrightText: 2025 Vrilly <tnjans@outlook.de>
 // SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
 //
@@ -16,7 +22,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Content.Server.Access.Systems;
-using Content.Server.Cargo.Components;
+using Content.Shared.Cargo.Components;
 using Content.Server.Cargo.Systems;
 using Content.Server.Chat.Systems;
 using Content.Server.Chemistry.Containers.EntitySystems;
@@ -57,6 +63,8 @@ using Content.Shared.Tag;
 using Robust.Shared.Audio.Systems;
 using Timer = Robust.Shared.Timing.Timer;
 using Content.Server._DV.Cargo.Systems;
+using Content.Shared.Chat;
+using Content.Shared.Chemistry.EntitySystems; // Einstein Engines - Languages
 
 namespace Content.Server.Mail
 {
@@ -74,11 +82,11 @@ namespace Content.Server.Mail
         [Dependency] private readonly OpenableSystem _openable = default!;
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
         [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
-        [Dependency] private readonly SolutionContainerSystem _solutionContainerSystem = default!;
+        [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
         [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
         [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
         [Dependency] private readonly DamageableSystem _damageableSystem = default!;
-        [Dependency] private readonly ItemSystem _itemSystem = default!;
+        [Dependency] private readonly AccessReaderSystem _accessReader = default!;
         [Dependency] private readonly MindSystem _mindSystem = default!;
         [Dependency] private readonly MetaDataSystem _metaDataSystem = default!;
         [Dependency] private readonly EmagSystem _emag = default!;
@@ -132,7 +140,7 @@ namespace Content.Server.Mail
         {
             if (args.SpawnResult == null ||
                 args.Job == null ||
-                args.Station is not {} station)
+                args.Station is not { } station)
             {
                 return;
             }
@@ -207,7 +215,7 @@ namespace Content.Server.Mail
             {
                 _idCardSystem.TryGetIdCard(args.Used, out var pdaID);
                 idCard = pdaID;
-            }   
+            }
 
             if (HasComp<IdCardComponent>(args.Used)) /// Or are they using an id card directly?
                 idCard = Comp<IdCardComponent>(args.Used);
@@ -223,7 +231,7 @@ namespace Content.Server.Mail
                     return;
                 }
 
-                if (!_accessSystem.IsAllowed(uid, args.User))
+                if (!_accessSystem.IsAllowed(args.User, uid))
                 {
                     _popupSystem.PopupEntity(Loc.GetString("mail-invalid-access"), uid, args.User);
                     return;
@@ -255,7 +263,7 @@ namespace Content.Server.Mail
                 if (_stationSystem.GetOwningStation(uid) != station)
                     continue;
 
-                _cargoSystem.UpdateBankAccount((station, account), component.Bounty);
+                _cargoSystem.UpdateBankAccount((station, account), component.Bounty, account.PrimaryAccount);
             }
         }
 
@@ -313,7 +321,7 @@ namespace Content.Server.Mail
                 if (_stationSystem.GetOwningStation(uid) != station)
                     continue;
 
-                _cargoSystem.UpdateBankAccount((station, account), component.Penalty);
+                _cargoSystem.UpdateBankAccount((station, account), component.Penalty, account.PrimaryAccount);
                 return;
             }
         }
@@ -558,10 +566,7 @@ namespace Content.Server.Mail
                 ("recipient", recipient.Name)));
 
             var accessReader = EnsureComp<AccessReaderComponent>(uid);
-            foreach (var access in recipient.AccessTags)
-            {
-                accessReader.AccessLists.Add(new HashSet<ProtoId<AccessLevelPrototype>>{access});
-            }
+            _accessReader.AddAccess((uid, accessReader), recipient.AccessTags);
         }
 
         /// <summary>

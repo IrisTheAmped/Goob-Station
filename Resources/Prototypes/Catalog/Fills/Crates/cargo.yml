@@ -51,6 +51,37 @@
     - id: ClothingOuterHardsuitLuxury
 
 - type: entity
+  id: CrateCargoParcelWrap
+  parent: CrateGenericSteel
+  name: parcel wrap crate
+  description: All your parcel wrapping needs in one crate, containing three rolls of parcel wrap.
+  components:
+  - type: StorageFill
+    contents:
+    - id: ParcelWrap
+      amount: 3
+
+#goobstart
+- type: entity
+  id: CrateCargoClarkeAssembly
+  name: clarke assembly crate
+  description: At long last, you will finally feel secure inside this brand new spankin machine! Assembly required.
+  parent: CratePrivateSecure
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClarkeHarness
+    - id: ClarkeHead
+    - id: ClarkeLArm
+    - id: ClarkeRArm
+    - id: ClarkeTreads
+    - id: ClarkeCentralElectronics
+    - id: ClarkePeripheralsElectronics
+    - id: MechAirTank
+    - id: MechThruster
+#goobend
+
+- type: entity
   id: CrateCargoGambling
   name: the grand lottery $$$
   description: A box containing treasure beyond your greatest imaginations!
@@ -216,7 +247,7 @@
     - id: ClothingOuterHardsuitCBURN
       prob: 0.001
       orGroup: Clothes
-    - id: ClothingOuterHardsuitBasic
+    - id: ClothingOuterHardsuitSanta
       prob: 0.001
       orGroup: Clothes
     - id: ClothingBackpackERTClown
@@ -354,9 +385,6 @@
       prob: 0.01
       orGroup: Plushies
     - id: PlushieArachind
-      prob: 0.01
-      orGroup: Plushies
-    - id: PlushieSamantha # Goobstation
       prob: 0.01
       orGroup: Plushies
     - id: PlushieThrongler #hehe

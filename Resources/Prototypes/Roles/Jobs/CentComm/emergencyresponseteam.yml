@@ -103,8 +103,12 @@
 # SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
 # SPDX-FileCopyrightText: 2025 Alpha-Two <92269094+Alpha-Two@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+# SPDX-FileCopyrightText: 2025 ImHoks <142083149+ImHoks@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 ScarKy0 <106310278+ScarKy0@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
+# SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
 # SPDX-FileCopyrightText: 2025 TheBorzoiMustConsume <197824988+TheBorzoiMustConsume@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 UpAndLeaves <92269094+Alpha-Two@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 blobadoodle <me@bloba.dev>
 # SPDX-FileCopyrightText: 2025 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
 #
@@ -127,6 +131,9 @@
   # Goobstation
   - NanotrasenRepresentative
   - BlueshieldOfficer
+  special: # Goobstation
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, DeathRattleImplantCentcomm ]
 
 - type: startingGear
   id: ERTLeaderGear
@@ -178,6 +185,14 @@
     - ERTSecurityUndeterminedWeapon
     # Goobstation - MagazineMagnum
 
+- type: chameleonOutfit
+  id: ERTLeaderChameleonOutfit
+  job: ERTLeader
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHelmetHardsuitERTLeader
+    neck: ClothingNeckBronzeheart
+
 # Chaplain
 - type: job
   id: ERTChaplain
@@ -201,6 +216,8 @@
     components:
     - type: BibleUser #Lets them heal with bibles
     - type: CanEnchant #GoobStation
+  - !type:AddImplantSpecial
+     implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, DeathRattleImplantCentcomm ]
 
 - type: startingGear
   id: ERTChaplainGear
@@ -225,12 +242,12 @@
     - DrinkWaterMelonJuiceJug
     - Lantern
     - Lantern
-    - ChaplainUndeterminedBible
+    - ChaplainUndeterminedBible # Goobstation
     - CrowbarRed
     - FoodBakedBunHotX
     - FoodBakedBunHotX
     - FoodBakedBunHotX
-    - Nullrod
+    - Nullrod # Goobstation
     - Lighter
     - ExecutiveIDCard # Goobstation - Executive Access!
 
@@ -257,14 +274,25 @@
     - DrinkWaterMelonJuiceJug
     - Lantern
     - Lantern
-    - ChaplainUndeterminedBible
+    - ChaplainUndeterminedBible # Goobstation
     - CrowbarRed
     - FoodBakedBunHotX
     - FoodBakedBunHotX
     - FoodBakedBunHotX
     - FoodBakedBunHotX
     - Lighter
+    - Nullrod # Goobstation
     - ExecutiveIDCard # Goobstation - Executive Access!
+
+- type: chameleonOutfit
+  id: ERTChaplainChameleonOutfit
+  job: ERTChaplain
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHelmetHardsuitERTChaplain
+    mask: ClothingMaskGasERT
+    outerClothing: ClothingOuterHardsuitERTChaplain
+    shoes: ClothingShoesBootsMagAdv
 
 # Engineer
 - type: job
@@ -284,6 +312,9 @@
   # Goobstation
   - NanotrasenRepresentative
   - BlueshieldOfficer
+  special: # Goobstation
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, DeathRattleImplantCentcomm ]
 
 - type: startingGear
   id: ERTEngineerGear
@@ -343,6 +374,14 @@
     - SheetSteel
     - SheetGlass
 
+- type: chameleonOutfit
+  id: ERTEngineerChameleonOutfit
+  job: ERTEngineer
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHelmetHardsuitERTEngineer
+    neck: ClothingNeckEngineermedal
+
 # Security
 - type: job
   id: ERTSecurity
@@ -350,7 +389,7 @@
   description: job-description-ertsecurity
   playTimeTracker: JobERTSecurity
   setPreference: false
-  startingGear: ERTEngineerGearEVA
+  startingGear: ERTSecurityGearEVA
   icon: "JobIconNanotrasen"
   supervisors: job-supervisors-centcom
   canBeAntag: false
@@ -361,6 +400,9 @@
   # Goobstation
   - NanotrasenRepresentative
   - BlueshieldOfficer
+  special: # Goobstation
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, DeathRattleImplantCentcomm]
 
 - type: startingGear
   id: ERTSecurityGear
@@ -439,6 +481,14 @@
 #    - CrowbarRed
 #    - MagazinePistol
 
+- type: chameleonOutfit
+  id: ERTSecurityChameleonOutfit
+  job: ERTSecurity
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHelmetHardsuitERTSecurity
+    neck: ClothingNeckSecuritymedal
+
 # Medical
 - type: job
   id: ERTMedical
@@ -457,6 +507,9 @@
   # Goobstation
   - NanotrasenRepresentative
   - BlueshieldOfficer
+  special: # Goobstation
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, DeathRattleImplantCentcomm ]
 
 - type: startingGear
   id: ERTMedicalGear
@@ -479,12 +532,13 @@
     - CentCommHypo
     - MedkitAdvancedFilled
     - CrowbarRed
-    - OmnizineChemistryBottle
+    - ChemistryBottleOmnizine
     - JugOxandrolone
     - JugSalicylicAcid
     - ParamedHypo
     - CartridgeAtropine
     - CartridgeAtropine
+    - MedicalBeamGunBattery
 
 - type: startingGear
   id: ERTMedicalGearEVA
@@ -511,6 +565,15 @@
     - ParamedHypo
     - CartridgeAtropine
     - CartridgeAtropine
+    - MedicalBeamGunBattery
+
+- type: chameleonOutfit
+  id: ERTMedicalChameleonOutfit
+  job: ERTMedical
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHelmetHardsuitERTMedical
+    neck: ClothingNeckStethoscope
 
 # Janitor
 - type: job
@@ -530,6 +593,9 @@
   # Goobstation
   - NanotrasenRepresentative
   - BlueshieldOfficer
+  special: # Goobstation
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, FreedomImplant, BluespaceLifelineImplant, RadioImplantCentcomm, NutrimentPumpImplant, StypticStimulatorImplant, DeathRattleImplantCentcomm]
 
 - type: startingGear
   id: ERTJanitorGear
@@ -576,3 +642,12 @@
     - Soap
     - CrowbarRed
     - AdvMopItem
+
+- type: chameleonOutfit
+  id: ERTJanitorChameleonOutfit
+  job: ERTJanitor
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHelmetHardsuitERTJanitor
+    neck: ClothingNeckScarfStripedPurple
+    eyes: ClothingEyesGlassesSunglasses

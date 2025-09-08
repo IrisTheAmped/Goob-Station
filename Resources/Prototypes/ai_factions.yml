@@ -15,14 +15,23 @@
 # SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
 # SPDX-FileCopyrightText: 2024 fishbait <gnesse@gmail.com>
 # SPDX-FileCopyrightText: 2024 username <113782077+whateverusername0@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 ActiveMammmoth <140334666+ActiveMammmoth@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
+# SPDX-FileCopyrightText: 2025 Armok <155400926+ARMOKS@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Arraydeess <arraygitbash@gmail.com>
+# SPDX-FileCopyrightText: 2025 Arraydeess14 <87253287+Arraydeess14@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Aviu00 <aviu00@protonmail.com>
+# SPDX-FileCopyrightText: 2025 Ethan_k <eknowles27@dtechhs.org>
 # SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
 # SPDX-FileCopyrightText: 2025 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Ilya246 <ilyukarno@gmail.com>
+# SPDX-FileCopyrightText: 2025 K-Dynamic <20566341+K-Dynamic@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 OnsenCapy <101037138+OnsenCapy@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Samuka-C <47865393+Samuka-C@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 ScarKy0 <106310278+ScarKy0@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 amogus <113782077+whateverusername0@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 lzk <124214523+lzk228@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 whateverusername0 <whateveremail>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
@@ -39,7 +48,6 @@
     - AllHostile
     - Heretic # goob edit - heretics
     - Blob # Goobstation - Blob
-    - Greytide # Goobstation
   friendly: # Goobstation
     - Wizard
     - PirateFaction # goob - pirates
@@ -59,6 +67,7 @@
   - Blob # Goobstation - Blob
   - Wizard
   - PirateFaction # goob - pirates
+  - Xenoborg
 
 - type: npcFaction
   id: Mouse
@@ -71,10 +80,13 @@
   id: PetsNT
   hostile:
   - Mouse
+  - Balloon # Goob Balloon Edit     Pets can join the fight against the balloons
   - SimpleHostile
   - Zombie
   - Xeno
   - AllHostile
+  - Wizard
+  - Dragon
   - Blob # Goobstation - Blob
 
 - type: npcFaction
@@ -86,11 +98,13 @@
   - PetsNT
   - Zombie
   - Revolutionary
+  - Dragon
+  - Xeno
   - AllHostile
+  - Xenoborg
   - Heretic # goob edit - heretics
   - Blob # Goobstation - Blob
   - PirateFaction # goob - pirates
-  - Greytide # Goobstation
   friendly: # Goobstation
     - Wizard
 
@@ -107,12 +121,12 @@
   - Zombie
   - Dragon
   - AllHostile
+  - Xenoborg
   - Changeling # goob edit - changelings
   - Heretic # goob edit - heretics
   - Blob # Goobstation - Blob
   - Wizard # goob edit - wizard
   - PirateFaction # goob - pirates
-  - Greytide # Goobstation
 
 - type: npcFaction
   id: Xeno
@@ -124,10 +138,12 @@
   - Zombie
   - Revolutionary
   - AllHostile
+  - Dragon
+  - Xenoborg
+  - Dragon
   - Heretic # goob edit - heretics
   - Blob # Goobstation - Blob
   - PirateFaction # goob - pirates
-  - Greytide # Goobstation
   friendly: # Goobstation
     - Wizard
 
@@ -142,12 +158,13 @@
   - PetsNT
   - Revolutionary
   - AllHostile
+  - Dragon
   - Changeling # goob edit - changelings
   - Heretic # goob edit - heretics
   - Blob # Goobstation - Blob
   - Wizard # goob edit - wizard
   - PirateFaction # goob - pirates
-  - Greytide # Goobstation
+  - Xenoborg
 
 - type: npcFaction
   id: Revolutionary
@@ -160,7 +177,7 @@
   - Blob # Goobstation - Blob
   - Wizard # Goobstation - wizard
   - PirateFaction # goob - pirates
-  - Greytide # Goobstation
+  - Xenoborg
 
 - type: npcFaction
   id: AllHostile
@@ -181,4 +198,33 @@
   - Blob # Goobstation - Blob
   - Wizard # goob edit - wizard
   - PirateFaction # goob - pirates
-  - Greytide # Goobstation
+
+# Balloons Factions Edit:
+- type: npcFaction  
+  id: Balloon
+  # Balloons can't attack
+  
+- type: npcFaction
+  id: Monkey
+  hostile:
+  - Balloon     # Custom faction specifically for attacking bloons
+
+- type: npcFaction
+  id: Xenoborg
+  hostile:
+  # they have brains
+  - NanoTrasen
+  - Syndicate
+  - Zombie
+  - Revolutionary
+  - Wizard
+  - Changeling # goob edit - changelings
+  - Heretic # goob edit - heretics
+  - PirateFaction # goob - pirates
+
+  - Xeno # rivalry
+
+  # cause they are hostile to them
+  - SimpleHostile 
+  - AllHostile
+  - Blob # Goobstation - Blob

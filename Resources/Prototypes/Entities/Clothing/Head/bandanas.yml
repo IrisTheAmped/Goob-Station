@@ -112,6 +112,8 @@
     tags:
     - Bandana
     - ClothMade
+    - Recyclable
+    - WhitelistChameleon
 
 - type: entity
   parent: [ClothingHeadBandBase, ClothingMaskBandBlack]

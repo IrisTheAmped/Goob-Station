@@ -10,8 +10,10 @@ using Content.Server._Shitmed.DelayedDeath;
 using Content.Server.Actions;
 using Content.Server.Administration.Systems;
 using Content.Server.Jittering;
+using Content.Shared.Damage;
 using Content.Shared.Examine;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Traits.Assorted;
@@ -26,34 +28,52 @@ public sealed partial class CheatDeathSystem : EntitySystem
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
     [Dependency] private readonly ActionsSystem _actionsSystem = default!;
     [Dependency] private readonly JitteringSystem _jitter = default!;
+    [Dependency] private readonly MobThresholdSystem _thresholdSystem = default!;
 
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<CheatDeathComponent, ComponentStartup>(OnStartup);
+
+        SubscribeLocalEvent<CheatDeathComponent, MapInitEvent>(OnInit);
+        SubscribeLocalEvent<CheatDeathComponent, ComponentRemove>(OnRemoval);
+
         SubscribeLocalEvent<CheatDeathComponent, CheatDeathEvent>(OnDeathCheatAttempt);
+
         SubscribeLocalEvent<CheatDeathComponent, ExaminedEvent>(OnExamined);
+
         SubscribeLocalEvent<CheatDeathComponent, DelayedDeathEvent>(OnDelayedDeath);
     }
 
-    private void OnStartup(EntityUid uid, CheatDeathComponent comp, ref ComponentStartup args)
-    {
-        _actionsSystem.AddAction(uid, comp.ActionCheatDeath);
-    }
+    private void OnInit(Entity<CheatDeathComponent> ent, ref MapInitEvent args) =>
+        _actionsSystem.AddAction(ent, ref ent.Comp.ActionEntity, ent.Comp.ActionCheatDeath);
+
+    private void OnRemoval(Entity<CheatDeathComponent> ent, ref ComponentRemove args) =>
+        _actionsSystem.RemoveAction(ent.Owner, ent.Comp.ActionEntity);
 
     private void OnExamined(Entity<CheatDeathComponent> ent, ref ExaminedEvent args)
     {
-        if (args.Examined == args.Examiner)
-            args.PushMarkup(Loc.GetString("cheat-death-component-remaining-revives", ("amount", ent.Comp.ReviveAmount)));
-    }
-
-    private void OnDelayedDeath(EntityUid uid, CheatDeathComponent comp, ref DelayedDeathEvent args)
-    {
-        if (args.Cancelled)
+        if (args.Examined != args.Examiner)
             return;
 
-        RemComp(uid, comp);
+        if (ent.Comp.InfiniteRevives)
+        {
+            var unlimited = Loc.GetString("cheat-death-component-remaining-revives-unlimited");
+            args.PushMarkup(unlimited);
+
+            return;
+        }
+
+        var remaining = Loc.GetString("cheat-death-component-remaining-revives", ("amount", ent.Comp.ReviveAmount));
+        args.PushMarkup(remaining);
+
     }
+
+    private void OnDelayedDeath(Entity<CheatDeathComponent> ent, ref DelayedDeathEvent args)
+    {
+        if (args.PreventRevive)
+            RemCompDeferred(ent.Owner, ent.Comp);
+    }
+
 
     private void OnDeathCheatAttempt(Entity<CheatDeathComponent> ent, ref CheatDeathEvent args)
     {
@@ -63,16 +83,27 @@ public sealed partial class CheatDeathSystem : EntitySystem
         if (!_mobStateSystem.IsDead(ent) && !ent.Comp.CanCheatStanding)
         {
             var failPopup = Loc.GetString("action-cheat-death-fail-not-dead");
-            _popupSystem.PopupEntity(failPopup, ent, PopupType.LargeCaution);
+            _popupSystem.PopupEntity(failPopup, ent, ent, PopupType.LargeCaution);
 
             return;
         }
 
         // If the entity is out of revives, or if they are unrevivable, return.
-        if (ent.Comp.ReviveAmount == 0 || HasComp<UnrevivableComponent>(ent))
+        if (ent.Comp.ReviveAmount <= 0 || HasComp<UnrevivableComponent>(ent))
         {
             var failPopup = Loc.GetString("action-cheat-death-fail-no-lives");
-            _popupSystem.PopupEntity(failPopup, ent, PopupType.LargeCaution);
+            _popupSystem.PopupEntity(failPopup, ent, ent, PopupType.LargeCaution);
+
+            return;
+        }
+
+        // If the holy damage exceeds the crit state, do not allow revives.
+        if (!TryComp<DamageableComponent>(ent, out var damageable)
+            || !_thresholdSystem.TryGetIncapThreshold(ent, out var incapThreshold)
+            || damageable.Damage.DamageDict["Holy"] >= incapThreshold)
+        {
+            var failPopup = Loc.GetString("action-cheat-death-holy-damage");
+            _popupSystem.PopupEntity(failPopup, ent, ent, PopupType.LargeCaution);
 
             return;
         }
@@ -94,9 +125,13 @@ public sealed partial class CheatDeathSystem : EntitySystem
         _jitter.DoJitter(ent, TimeSpan.FromSeconds(5), true);
 
         // Decrement remaining revives.
-        if (ent.Comp.ReviveAmount != -1)
+        if (!ent.Comp.InfiniteRevives)
             ent.Comp.ReviveAmount--;
-        args.Handled = true;
 
+        // remove comp if at zero
+        if (ent.Comp.ReviveAmount <= 0 && !ent.Comp.InfiniteRevives)
+            RemComp(ent.Owner, ent.Comp);
+
+        args.Handled = true;
     }
 }

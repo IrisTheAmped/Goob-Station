@@ -73,7 +73,9 @@
 # SPDX-FileCopyrightText: 2024 voidnull000 <18663194+voidnull000@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
+# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
 # SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
+# SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
 # SPDX-FileCopyrightText: 2025 starch <starchpersonal@gmail.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
@@ -93,25 +95,30 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitCaptain
 
+
 - type: loadout
   id: CaptainJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtCaptain
+
 
 - type: loadout
   id: CaptainFormalSuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitCapFormal
 
+
 - type: loadout
   id: CaptainFormalSkirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtCapFormalDress
 
+
 - type: loadout # goob
   id: CaptainJumpsuitMilitary
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryCaptain
+
 
 # Head
 - type: loadout
@@ -119,10 +126,12 @@
   equipment:
     head: ClothingHeadHatCaptain
 
+
 - type: loadout
   id: CaptainCap
   equipment:
     head: ClothingHeadHatCapcap
+
 
 # Mask - Tbh idk if this should be here or in _goob but this is easier.
 
@@ -183,4 +192,4 @@
 - type: loadout
   id: CaptainWintercoat
   equipment:
-    outerClothing: ClothingOuterWinterCap
+    outerClothing: ClothingOuterWinterCapArmored # Goob edit

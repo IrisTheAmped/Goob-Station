@@ -21,7 +21,7 @@ evolutionmenu-combat-armhammer-desc =
 
 evolutionmenu-combat-armclaw-name = Arm Claw
 evolutionmenu-combat-armclaw-desc =
-    Reform one of your arms into a grotesque claw, composed of bone and flesh, able to grab your opponents, immobilizing them.
+    Reform one of your arms into a grotesque claw, composed of bone and flesh, able to inject long lasting poison on hit, muting and damaging them.
     Costs 15 chemicals.
 
 evolutionmenu-combat-dartgun-name = Dart Gun
@@ -45,7 +45,7 @@ evolutionmenu-combat-armor-desc =
     Costs 25 chemicals.
 
 evolutionmenu-combat-shield-name = Organic Shield
-evolutionmenu-combat-shield-desc = 
+evolutionmenu-combat-shield-desc =
     Reforms one of your arms into a large, fleshy shield.
     Reduces incoming damage, albeit is less durable than conventional shields.
     WARNING: Requires you to absorb at least 1 organic to use the ability.
@@ -108,8 +108,9 @@ evolutionmenu-sting-transform-desc =
 evolutionmenu-sting-armblade-name = Fake Arm Blade Sting
 evolutionmenu-sting-armblade-desc =
     Inject some of your genome into an organic target, forcing their arm to shapeshift into a dull armblade.
+    Target can only have one fake armblade at a time.
     May be used while under the effects of Lesser Form.
-    Costs 50 chemicals.
+    Costs 30 chemicals.
 
 # utility
 
@@ -150,8 +151,10 @@ evolutionmenu-utility-stims-desc =
 
 evolutionmenu-utility-fleshmend-name = Fleshmend
 evolutionmenu-utility-fleshmend-desc =
-    Rapidly heal your brute damage.
-    Burn and oxygen damage healed at a lower amount.
+    Applies "fleshmend" status effect, rapidly healing brute damage, as well as burn/asphyxiation at a lower amount.
+    Additionally, bleeding will gradually heal and blood volume will slowly be restored.
+    Lasts 10 seconds.
+    Healing will cease while on fire.
     Costs 35 chemicals.
 
 evolutionmenu-utility-lastresort-name = Last Resort

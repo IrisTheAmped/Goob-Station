@@ -7,7 +7,7 @@
 - type: entity
   name: carving knife
   description: A small knife made of cold steel, pure and perfect. Its sharpness can carve into titanium itself - but only few can evoke the dangers that lurk beneath reality.
-  parent: [ BaseKnife, BaseMagicContraband ]
+  parent: [ BaseKnife, BaseMagicalContraband ]
   id: CarvingKnife
   components:
   - type: UnholyItem
@@ -53,17 +53,3 @@
       components:
       - Heretic
       - Ghoul
-
-- type: entity
-  id: ActionRunebreak
-  name: Rune Break
-  description: Destroys all runes carved by this blade.
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: InstantAction
-    useDelay: 10
-    itemIconStyle: NoItem
-    icon:
-      sprite: _Goobstation/Heretic/abilities_heretic.rsi
-      state: rune_break
-    event: !type:DeleteAllCarvingsEvent

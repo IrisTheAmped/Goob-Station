@@ -76,7 +76,9 @@
       color: "#FFC458"
       netsync: false
     - type: Appearance
-    - type: ToggleableLightVisuals
+    - type: ToggleableVisuals
+      spriteLayer: light
+    - type: ItemTogglePointLight
     - type: PowerCellSlot
       cellSlotId: cell_slot
     - type: ItemSlots
@@ -122,7 +124,6 @@
     - type: Flash
     - type: LimitedCharges
       maxCharges: 15
-      charges: 15
     - type: MeleeWeapon
       damage:
         types:

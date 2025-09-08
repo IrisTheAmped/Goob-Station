@@ -85,7 +85,6 @@
 # SPDX-FileCopyrightText: 2024 foboscheshir <156405958+foboscheshir@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2024 github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2024 lunarcomets <140772713+lunarcomets@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
 # SPDX-FileCopyrightText: 2024 neutrino <67447925+neutrino-laser@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
@@ -95,7 +94,6 @@
 # SPDX-FileCopyrightText: 2024 redfire1331 <Redfire1331@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2024 saintmuntzer <47153094+saintmuntzer@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2024 shamp <140359015+shampunj@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2024 strO0pwafel <153459934+strO0pwafel@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2024 stroopwafel <j.o.luijkx@student.tudelft.nl>
 # SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
@@ -104,10 +102,17 @@
 # SPDX-FileCopyrightText: 2024 Арт <123451459+JustArt1m@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
+# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+# SPDX-FileCopyrightText: 2025 Phooooooooooooooooooooooooooooooosphate <184853112+Phooooooooooooooooooooooooooooooosphate@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
 # SPDX-FileCopyrightText: 2025 SX_7 <sn1.test.preria.2002@gmail.com>
 # SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
+# SPDX-FileCopyrightText: 2025 Ted Lukin <66275205+pheenty@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 lzk <124214523+lzk228@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
+# SPDX-FileCopyrightText: 2025 shityaml <unalterableness@gmail.com>
+# SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 # Command
@@ -122,7 +127,13 @@
   - CaptainOuterClothing
   - Survival
   - Trinkets
+  - Animals
   - GroupSpeciesBreathTool
+  # Goobstation - EE Plasmeme Change.
+  - CaptainEnvirohelm
+  - CaptainEnvirosuit
+  - CaptainEnvirogloves
+  - CaptainGloves
 
 - type: roleLoadout
   id: JobHeadOfPersonnel
@@ -136,13 +147,18 @@
   - Glasses
   - Survival
   - Trinkets
+  - Animals
   - GroupSpeciesBreathTool
-
+  # Goobstation - EE Plasmeme Change.
+  - HoPEnvirohelm
+  - HoPEnvirosuit
+  - HoPEnvirogloves
+  - HoPGloves
 # Silicons
-#- type: roleLoadout
-#  id: JobBorg
-#  nameDataset: roleloadout doesn't support both so need to update that first.
-#  canCustomizeName: true
+- type: roleLoadout
+  id: JobBorg
+  nameDataset: NamesBorg
+  canCustomizeName: true
 
 - type: roleLoadout
   id: JobStationAi
@@ -164,7 +180,12 @@
   - Glasses
   - Survival
   - Trinkets
+  - Animals
   - GroupSpeciesBreathTool
+  # Goobstation - EE Plasmeme Change.
+  - AssistantEnvirohelm
+  - AssistantEnvirosuit
+  - AssistantEnvirogloves
 
 - type: roleLoadout
   id: JobBartender
@@ -177,7 +198,12 @@
   - Glasses
   - Survival
   - Trinkets
+  - Animals
   - GroupSpeciesBreathTool
+  # Goobstation - EE Plasmeme Change.
+  - BartenderEnvirohelm
+  - BartenderEnvirosuit
+  - BartenderEnvirogloves
 
 - type: roleLoadout
   id: JobServiceWorker
@@ -188,7 +214,12 @@
   - Glasses
   - Survival
   - Trinkets
+  - Animals
   - GroupSpeciesBreathTool
+  # Goobstation - EE Plasmeme Change.
+  - ServiceWorkerEnvirohelm
+  - ServiceWorkerEnvirosuit
+  - ServiceWorkerEnvirogloves
 
 - type: roleLoadout
   id: JobChef
@@ -202,7 +233,12 @@
   - Glasses
   - Survival
   - Trinkets
+  - Animals
   - GroupSpeciesBreathTool
+  # Goobstation - EE Plasmeme Change.
+  - ChefEnvirohelm
+  - ChefEnvirosuit
+  - ChefEnvirogloves
 
 - type: roleLoadout
   id: JobLibrarian
@@ -213,7 +249,12 @@
   - Glasses
   - Survival
   - Trinkets
+  - Animals
   - GroupSpeciesBreathTool
+  # Goobstation - EE Plasmeme Change.
+  - LibrarianEnvirohelm
+  - LibrarianEnvirosuit
+  - LibrarianEnvirogloves
 
 - type: roleLoadout
   id: JobLawyer
@@ -225,7 +266,12 @@
   - Glasses
   - Survival
   - Trinkets
+  - Animals
   - GroupSpeciesBreathTool
+  # Goobstation - EE Plasmeme Change.
+  - LawyerEnvirohelm
+  - LawyerEnvirosuit
+  - LawyerEnvirogloves
 
 - type: roleLoadout
   id: JobChaplain
@@ -240,7 +286,12 @@
   - Glasses
   - Survival
   - Trinkets
+  - Animals
   - GroupSpeciesBreathTool
+  # Goobstation - EE Plasmeme Change.
+  - ChaplainEnvirohelm
+  - ChaplainEnvirosuit
+  - ChaplainEnvirogloves
 
 - type: roleLoadout
   id: JobJanitor
@@ -255,7 +306,12 @@
   - Survival
   - Trinkets
   - JanitorPlunger
+  - Animals
   - GroupSpeciesBreathTool
+  # Goobstation - EE Plasmeme Change.
+  - JanitorEnvirohelm
+  - JanitorEnvirosuit
+  - JanitorEnvirogloves
 
 - type: roleLoadout
   id: JobBotanist
@@ -268,10 +324,16 @@
   - Glasses
   - Survival
   - Trinkets
+  - Animals
   - GroupSpeciesBreathTool
+  # Goobstation - EE Plasmeme Change.
+  - BotanistEnvirohelm
+  - BotanistEnvirosuit
+  - BotanistEnvirogloves
 
 - type: roleLoadout
   id: JobClown
+  canCustomizeName: true
   groups:
   - GroupTankHarness
   - ClownHead
@@ -282,9 +344,15 @@
   - Glasses
   - SurvivalClown
   - Trinkets
+  - Animals
+  # Goobstation - EE Plasmeme Change.
+  - ClownEnvirohelm
+  - ClownEnvirosuit
+  - ClownEnvirogloves
 
 - type: roleLoadout
   id: JobMime
+  canCustomizeName: true
   groups:
   - GroupTankHarness
   - MimeHead
@@ -296,6 +364,12 @@
   - Glasses
   - SurvivalMime
   - Trinkets
+  - Animals
+  # Goobstation - EE Plasmeme Change.
+  - MimeEnvirohelm
+  - MimeEnvirosuit
+  - MimeEnvirogloves
+  - MimeGloves
 
 - type: roleLoadout
   id: JobMusician
@@ -308,7 +382,12 @@
   - Survival
   - Trinkets
   - Instruments
+  - Animals
   - GroupSpeciesBreathTool
+  # Goobstation - EE Plasmeme Change.
+  - MusicianEnvirohelm
+  - MusicianEnvirosuit
+  - MusicianEnvirogloves
 
 # Cargo
 - type: roleLoadout
@@ -324,7 +403,12 @@
   - Glasses
   - Survival
   - Trinkets
+  - Animals
   - GroupSpeciesBreathTool
+  # Goobstation - EE Plasmeme Change.
+  - QuartermasterEnvirohelm
+  - QuartermasterEnvirosuit
+  - QuartermasterEnvirogloves
 
 - type: roleLoadout
   id: JobCargoTechnician
@@ -338,19 +422,30 @@
   - Glasses
   - Survival
   - Trinkets
+  - Animals
   - GroupSpeciesBreathTool
+  # Goobstation - EE Plasmeme Change.
+  - CargoTechnicianEnvirohelm
+  - CargoTechnicianEnvirosuit
+  - CargoTechnicianEnvirogloves
 
 - type: roleLoadout
   id: JobSalvageSpecialist
   groups:
   - GroupTankHarness
+  - SalvageSpecialistNeck # Goobstation
   - SalvageSpecialistBackpack
   - SalvageSpecialistOuterClothing
   - SalvageSpecialistShoes
   - Glasses
   - Survival
   - Trinkets
+  - Animals
   - GroupSpeciesBreathTool
+  # Goobstation - EE Plasmeme Change.
+  - SalvageEnvirohelm
+  - SalvageEnvirosuit
+  - SalvageEnvirogloves
 
 # Engineering
 - type: roleLoadout
@@ -365,7 +460,12 @@
   - ChiefEngineerShoes
   - SurvivalExtended
   - Trinkets
+  - Animals
   - GroupSpeciesBreathTool
+  # Goobstation - EE Plasmeme Change.
+  - ChiefEngineerEnvirohelm
+  - ChiefEngineerEnvirosuit
+  - ChiefEngineerEnvirogloves
 
 - type: roleLoadout
   id: JobTechnicalAssistant
@@ -375,7 +475,12 @@
   - StationEngineerBackpack
   - SurvivalExtended
   - Trinkets
+  - Animals
   - GroupSpeciesBreathTool
+  # Goobstation - EE Plasmeme Change.
+  - TechnicalAssistantEnvirohelm
+  - TechnicalAssistantEnvirosuit
+  - TechnicalAssistantEnvirogloves
 
 - type: roleLoadout
   id: JobStationEngineer
@@ -389,7 +494,12 @@
   - StationEngineerID
   - SurvivalExtended
   - Trinkets
+  - Animals
   - GroupSpeciesBreathTool
+  # Goobstation - EE Plasmeme Change.
+  - StationEngineerEnvirohelm
+  - StationEngineerEnvirosuit
+  - StationEngineerEnvirogloves
 
 - type: roleLoadout
   id: JobAtmosphericTechnician
@@ -402,7 +512,12 @@
   - AtmosphericTechnicianShoes
   - SurvivalExtended
   - Trinkets
+  - Animals
   - GroupSpeciesBreathTool
+  # Goobstation - EE Plasmeme Change.
+  - AtmosEnvirohelm
+  - AtmosEnvirosuit
+  - AtmosEnvirogloves
 
 # Science
 - type: roleLoadout
@@ -419,7 +534,12 @@
   - Glasses
   - Survival
   - Trinkets
+  - Animals
   - GroupSpeciesBreathTool
+  # Goobstation - EE Plasmeme Change.
+  - ResearchDirectorEnvirosuit
+  - ResearchDirectorEnvirohelm
+  - ResearchDirectorEnvirogloves
 
 - type: roleLoadout
   id: JobScientist
@@ -436,7 +556,12 @@
   - Glasses
   - Survival
   - Trinkets
+  - Animals
   - GroupSpeciesBreathTool
+  # Goobstation - EE Plasmeme Change.
+  - ScientistEnvirohelm
+  - ScientistEnvirosuit
+  - ScientistEnvirogloves
 
 - type: roleLoadout
   id: JobResearchAssistant
@@ -447,7 +572,12 @@
   - Glasses
   - Survival
   - Trinkets
+  - Animals
   - GroupSpeciesBreathTool
+  # Goobstation - EE Plasmeme Change.
+  - ResearchAssistantEnvirohelm
+  - ResearchAssistantEnvirosuit
+  - ResearchAssistantEnvirogloves
 
 # Security
 - type: roleLoadout
@@ -457,13 +587,20 @@
   - HeadofSecurityNeck
   - HeadofSecurityJumpsuit
   - SecurityBackpack
+  - SecurityMelee # Goobstation
   - SecurityBelt
   - HeadofSecurityOuterClothing
-  - SecurityShoes
+  - HeadofSecurityShoes # Goobstation edit
   - SurvivalSecurity
   - Trinkets
   - SecurityStar
+  - Animals
   - GroupSpeciesBreathToolSecurity
+  # Goobstation - EE Plasmeme Change.
+  - HeadofSecurityEnvirohelm
+  - HeadofSecurityEnvirosuit
+  - HeadofSecurityEnvirogloves
+  - HeadofSecurityGloves
 
 - type: roleLoadout
   id: JobWarden
@@ -471,6 +608,7 @@
   - WardenHead
   - WardenJumpsuit
   - SecurityBackpack
+  - SecurityMelee # Goobstation
   - SecurityNeck
   - SecurityBelt
   - WardenOuterClothing
@@ -478,7 +616,12 @@
   - SurvivalSecurity
   - Trinkets
   - SecurityStar
+  - Animals
   - GroupSpeciesBreathToolSecurity
+  # Goobstation - EE Plasmeme Change.
+  - WardenEnvirohelm
+  - WardenEnvirosuit
+  - WardenEnvirogloves
 
 - type: roleLoadout
   id: JobSecurityOfficer
@@ -486,6 +629,7 @@
   - SecurityHead
   - SecurityJumpsuit
   - SecurityBackpack
+  - SecurityMelee # Goobstation
   - SecurityOuterClothing
   - SecurityShoes
   - SecurityNeck
@@ -494,7 +638,12 @@
   - SurvivalSecurity
   - Trinkets
   - SecurityStar
+  - Animals
   - GroupSpeciesBreathToolSecurity
+  # Goobstation - EE Plasmeme Change.
+  - SecurityOfficerEnvirohelm
+  - SecurityOfficerEnvirosuit
+  - SecurityOfficerEnvirogloves
 
 - type: roleLoadout
   id: JobDetective
@@ -508,18 +657,30 @@
   - SurvivalSecurity
   - Trinkets
   - SecurityStar
+  - Animals
   - GroupSpeciesBreathToolSecurity
+  # Goobstation - EE Plasmeme Change.
+  - DetectiveEnvirohelm
+  - DetectiveEnvirosuit
+  - DetectiveEnvirogloves
+  - DetectiveGloves
 
 - type: roleLoadout
   id: JobSecurityCadet
   groups:
   - SecurityCadetJumpsuit
   - SecurityBackpack
+  - SecurityMelee # Goobstation
   - SurvivalSecurity
   - SecurityNeck
   - SecurityOuterClothing # Goobstation - Why not.
   - Trinkets
+  - Animals
   - GroupSpeciesBreathToolSecurity
+  # Goobstation - EE Plasmeme Change.
+  - SecurityCadetEnvirohelm
+  - SecurityCadetEnvirosuit
+  - SecurityCadetEnvirogloves
 
 # Medical
 - type: roleLoadout
@@ -534,10 +695,15 @@
   - ChiefMedicalOfficerOuterClothing
   - ChiefMedicalOfficerNeck
   - ChiefMedicalOfficerShoes
-  - Glasses
+  - MedicalEyewear
   - SurvivalMedical
   - Trinkets
+  - Animals
   - GroupSpeciesBreathToolMedical
+  # Goobstation - EE Plasmeme Change.
+  - ChiefMedicalOfficerEnvirohelm
+  - ChiefMedicalOfficerEnvirosuit
+  - ChiefMedicalOfficerEnvirogloves
 
 - type: roleLoadout
   id: JobMedicalDoctor
@@ -551,10 +717,15 @@
   - MedicalDoctorOuterClothing
   - MedicalShoes
   - MedicalDoctorPDA
-  - Glasses
+  - MedicalEyewear
   - SurvivalMedical
   - Trinkets
+  - Animals
   - GroupSpeciesBreathToolMedical
+  # Goobstation - EE Plasmeme Change.
+  - MedicalDoctorEnvirohelm
+  - MedicalDoctorEnvirosuit
+  - MedicalDoctorEnvirogloves
 
 - type: roleLoadout
   id: JobMedicalIntern
@@ -562,15 +733,21 @@
   - GroupTankHarness
   - MedicalInternJumpsuit
   - MedicalBackpack
-  - Glasses
+  - MedicalEyewear
   - SurvivalMedical
   - Trinkets
+  - Animals
   - GroupSpeciesBreathToolMedical
+  # Goobstation - EE Plasmeme Change.
+  - MedicalInternEnvirohelm
+  - MedicalInternEnvirosuit
+  - MedicalInternEnvirogloves
 
 - type: roleLoadout
   id: JobChemist
   groups:
   - GroupTankHarness
+  - ChemistHead # Goobstation
   - MedicalMask
   - ChemistJumpsuit
   - MedicalGloves
@@ -579,7 +756,12 @@
   - MedicalShoes
   - SurvivalMedical
   - Trinkets
+  - Animals
   - GroupSpeciesBreathToolMedical
+  # Goobstation - EE Plasmeme Change.
+  - ChemistEnvirohelm
+  - ChemistEnvirosuit
+  - ChemistEnvirogloves
 
 - type: roleLoadout
   id: JobParamedic
@@ -592,21 +774,33 @@
   - MedicalBackpack
   - ParamedicOuterClothing
   - ParamedicShoes
-  - Glasses
+  - MedicalEyewear
   - SurvivalMedical
   - Trinkets
+  - Animals
   - GroupSpeciesBreathToolMedical
+  # Goobstation - EE Plasmeme Change.
+  - ParamedicEnvirohelm
+  - ParamedicEnvirosuit
+  - ParamedicEnvirogloves
 
 # Wildcards
 - type: roleLoadout
   id: JobZookeeper
   groups:
+  - ZookeeperHead
+  - ZookeeperJumpsuit
   - GroupTankHarness
   - CommonBackpack
   - Glasses
   - Survival
   - Trinkets
+  - Animals
   - GroupSpeciesBreathTool
+  # Goobstation - EE Plasmeme Change.
+  - ZookeeperEnvirohelm
+  - ZookeeperEnvirosuit
+  - ZookeeperEnvirogloves
 
 - type: roleLoadout
   id: JobReporter
@@ -618,8 +812,12 @@
   - Glasses
   - Survival
   - Trinkets
+  - Animals
   - GroupSpeciesBreathTool
-
+  # Goobstation - EE Plasmeme Change.
+  - ReporterEnvirohelm
+  - ReporterEnvirosuit
+  - ReporterEnvirogloves
 
 - type: roleLoadout
   id: JobPsychologist
@@ -630,7 +828,12 @@
   - Glasses
   - Survival
   - Trinkets
+  - Animals
   - GroupSpeciesBreathTool
+  # Goobstation - EE Plasmeme Change.
+  - PsychologistEnvirohelm
+  - PsychologistEnvirosuit
+  - PsychologistEnvirogloves
 
 - type: roleLoadout
   id: JobBoxer
@@ -642,16 +845,29 @@
   - Glasses
   - Survival
   - Trinkets
+  - Animals
   - GroupSpeciesBreathTool
+  # Goobstation - EE Plasmeme Change.
+  - BoxerEnvirohelm
+  - BoxerEnvirosuit
 
 # These loadouts are used for non-crew spawns, like off-station antags and event mobs
 # They will be used without player configuration, thus they will only ever apply what is forced by MinLimit
 
+# gives vox a harness and breathing mask
+# nitrogen tank not included
 - type: roleLoadout
   id: RoleSurvivalVoxSupport
   groups:
   - GroupSpeciesBreathTool
   - GroupTankHarness
+
+# gives vox a nitrogen breathing tank
+# other species get nothing
+- type: roleLoadout
+  id: RoleSurvivalVoxTank
+  groups:
+  - GroupEVATankVox
 
 - type: roleLoadout
   id: RoleSurvivalStandard

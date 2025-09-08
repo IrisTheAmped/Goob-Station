@@ -101,8 +101,10 @@
 // SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
 // SPDX-FileCopyrightText: 2025 BombasterDS2 <shvalovdenis.workmail@gmail.com>
 // SPDX-FileCopyrightText: 2025 Errant <35878406+Errant-4@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
 // SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
 // SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
+// SPDX-FileCopyrightText: 2025 pacable <igor.mamaev1@gmail.com>
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -118,8 +120,8 @@ using Robust.Shared.Containers;
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Storage.Components;
 using Robust.Server.Containers;
+using Content.Shared.Inventory; // Goobstation
 using Content.Shared.Whitelist;
-using Content.Shared.Inventory;
 
 namespace Content.Server.Power.EntitySystems;
 
@@ -131,7 +133,7 @@ internal sealed class ChargerSystem : EntitySystem
     [Dependency] private readonly BatterySystem _battery = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
-    [Dependency] private readonly InventorySystem _inventorySystem = default!;
+    [Dependency] private readonly InventorySystem _inventory = default!; // Goobstation
 
     public override void Initialize()
     {
@@ -194,7 +196,12 @@ internal sealed class ChargerSystem : EntitySystem
             if (!_container.TryGetContainer(uid, charger.SlotId, out var container, containerComp))
                 continue;
 
-            if (charger.Status == CellChargerStatus.Empty || charger.Status == CellChargerStatus.Charged || container.ContainedEntities.Count == 0)
+            // Goobstation start
+            if (container.ContainedEntities.Count == 0)
+                continue;
+            UpdateStatus(uid, charger);
+            // Goobstation end
+            if (charger.Status == CellChargerStatus.Empty || charger.Status == CellChargerStatus.Charged) // Goobstation edit
                 continue;
 
             foreach (var contained in container.ContainedEntities)
@@ -360,8 +367,8 @@ internal sealed class ChargerSystem : EntitySystem
         UpdateStatus(uid, component);
     }
 
-    // Goobstation - Modsuits - Changed charger logic to work with suits in cyborg charger
-    private bool SearchForBattery(EntityUid uid, [NotNullWhen(true)] out EntityUid? batteryUid, [NotNullWhen(true)] out BatteryComponent? component)
+    // Goobstation - made public
+    public bool SearchForBattery(EntityUid uid, [NotNullWhen(true)] out EntityUid? batteryUid, [NotNullWhen(true)] out BatteryComponent? component)
     {
         batteryUid = null;
         component = null;
@@ -373,32 +380,39 @@ internal sealed class ChargerSystem : EntitySystem
             return true;
         }
 
+        // <Goobstation> completely rewritten
         // try get battery by checking for a power cell slot on the inserted entity
         if (_powerCell.TryGetBatteryFromSlot(uid, out batteryUid, out component))
             return true;
 
-        if (TryComp<InventoryComponent>(uid, out var inventory))
+        var findEv = new FindBatteryEvent();
+        RaiseLocalEvent(uid, ref findEv);
+        // only relay to equipment if no battery was found in the entity itself.
+        if (findEv.FoundBattery == null && TryComp<InventoryComponent>(uid, out var inventory))
+            _inventory.RelayEvent((uid, inventory), ref findEv);
+
+        if (findEv.FoundBattery is {} battery)
         {
-            var relayEv = new FindInventoryBatteryEvent();
-            _inventorySystem.RelayEvent((uid, inventory), ref relayEv);
-
-            if (relayEv.FoundBattery != null)
-            {
-                batteryUid = relayEv.FoundBattery.Value.Owner;
-                component = relayEv.FoundBattery.Value.Comp;
-                return true;
-            }
+            batteryUid = battery.Owner;
+            component = battery.Comp;
+            return true;
         }
-
+        // </Goobstation>
         return false;
     }
 }
 
-// Goobstation - Modsuits stuff
+/// <summary>
+/// Goobstation: Raised on an entity in a charger to find a battery to charge.
+/// It gets raised on the entity itself then, if no battery was found, relayed to equipped items.
+/// </summary>
+/// <remarks>
+/// This can't be in goob modules since it needs Content.Shared.Inventory and Content.Server.Power.Components
+/// </remarks>
 [ByRefEvent]
-public record struct FindInventoryBatteryEvent() : IInventoryRelayEvent
+public record struct FindBatteryEvent() : IInventoryRelayEvent
 {
     public SlotFlags TargetSlots { get; } = SlotFlags.WITHOUT_POCKET;
 
-    public Entity<BatteryComponent>? FoundBattery { get; set; }
+    public Entity<BatteryComponent>? FoundBattery;
 }

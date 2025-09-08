@@ -106,7 +106,7 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
 
     private void SendBlobBriefing(EntityUid mind)
     {
-        if (_mindSystem.TryGetSession(mind, out var session))
+        if (_playerManager.TryGetSessionByEntity(mind, out var session))
         {
             _chatManager.DispatchServerMessage(session, Loc.GetString("blob-role-greeting"));
         }
@@ -144,7 +144,11 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
 
         if (!isNewMind)
         {
-            var name = mind.Session?.Name ?? "???";
+            String name;
+            if (_playerManager.TryGetSessionById(mind.UserId, out var session1))
+                name = session1.Name;
+            else
+                name = "???";
             _mindSystem.WipeMind(mindId, mind);
             mindId = _mindSystem.CreateMind(args.UserId, $"Blob Player ({name})");
             mind = Comp<MindComponent>(mindId);
@@ -180,7 +184,7 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
             return;
         }
 
-        _action.GrantActions(uid, component.Core.Value.Comp.Actions, component.Core.Value);
+        _action.GrantActions(uid, component.Core.Value.Comp.Actions, component.Core.Value.Owner);
         _viewSubscriberSystem.AddViewSubscriber(component.Core.Value, playerSession); // GrantActions require keep in pvs
     }
 
@@ -338,7 +342,7 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
         var newCore = Spawn(blobCoreComponent.TilePrototypes[BlobTileType.Core], args.Target);
 
         blobCoreComponent.CanSplit = false;
-        _action.RemoveAction(args.Action);
+        _action.RemoveAction(args.Action.Owner);
 
         if (TryComp<BlobCoreComponent>(newCore, out var newBlobCoreComponent))
         {

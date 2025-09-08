@@ -74,7 +74,9 @@
 # SPDX-FileCopyrightText: 2024 voidnull000 <18663194+voidnull000@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+# SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
 # SPDX-FileCopyrightText: 2025 grub <unalterableness@gmail.com>
+# SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
 # SPDX-FileCopyrightText: 2025 shityaml <unalterableness@gmail.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
@@ -84,25 +86,46 @@
   equipment:
     head: ClothingHeadHatBowlerHat
 
+
 - type: loadout
   id: NanotrasenRepresentativeTop
   equipment:
     head: ClothingHeadHatTophat
+
 
 - type: loadout
   id: NanotrasenRepresentativeOutlaw
   equipment:
     head: ClothingHeadHatOutlawHat
 
+
 - type: loadout
   id: NanotrasenRepresentativeBeret
   equipment:
     head: ClothingHeadHatBeretFrench
 
+
 - type: loadout
   id: NanotrasenRepresentativeMAA
   equipment:
     head: ClothingHeadHatSyndieMAA
+
+
+- type: loadout
+  id: NanotrasenRepresentativeEnvirohelm
+  equipment:
+    head: ClothingHeadEnvirohelmNanotrasenRepresentative
+  effects:
+  - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change.
+    species:
+    - Plasmaman
+
+# Gloves
+- type: loadout
+  id: NanotrasenRepresentativeGloves
+  equipment:
+    gloves: ClothingHandsGlovesHeavyGoldenTrim
+
 
 # Neck
 - type: loadout
@@ -114,7 +137,7 @@
 - type: loadout
   id: NanotrasenRepresentativeBackpack
   equipment:
-    back: ClothingBackpack
+    back: ClothingBackpackCentcomm
 
 - type: loadout
   id: NanotrasenRepresentativeDuffel
@@ -124,7 +147,12 @@
 - type: loadout
   id: NanotrasenRepresentativeSatchel
   equipment:
-    back: ClothingBackpackSatchelLeather
+    back: ClothingBackpackSatchelCentcomm
+
+- type: loadout
+  id: NanotrasenRepresentativeMessenger
+  equipment:
+    back: ClothingBackpackMessengerCentcomm
 
 # Jumpsuits
 - type: loadout
@@ -132,10 +160,21 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitNanotrasenRepresentative
 
+
 - type: loadout
   id: NanotrasenRepresentativeJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtNanotrasenRepresentative
+
+
+- type: loadout
+  id: NanotrasenRepresentativeEnvirosuit
+  equipment:
+    jumpsuit: ClothingUniformEnvirosuitNanotrasenRepresentative
+  effects:
+  - !type:SpeciesLoadoutEffect # Goobstation - EE Plasmeme Change.
+    species:
+    - Plasmaman
 
 # Belt
 - type: loadout

@@ -41,6 +41,12 @@
 # SPDX-FileCopyrightText: 2024 stellar-novas <stellar_novas@riseup.net>
 # SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
+# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+# SPDX-FileCopyrightText: 2025 Ilya246 <57039557+Ilya246@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
+# SPDX-FileCopyrightText: 2025 Samuka-C <47865393+Samuka-C@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 ScarKy0 <106310278+ScarKy0@users.noreply.github.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -124,14 +130,17 @@
   # long range since otherwise it'd defeat the point of a handheld radio independent of telecomms
   longRange: true
 
-- type: radioChannel
-  id: Binary
-  name: chat-radio-binary
-  keycode: 'b'
-  frequency: 1001
-  color: "#5ed7aa"
-  # long range since otherwise it'd defeat the point of a handheld radio independent of telecomms
-  longRange: true
+# Goobstation - replaced with collective mind
+# commented out so anyone trying to use it gets errors and sees this
+# if you ARE one of said anyones, instead go copy yml of anything with collective mind
+#- type: radioChannel
+#  id: Binary
+#  name: chat-radio-binary
+#  keycode: 'b'
+#  frequency: 1001
+#  color: "#5ed7aa"
+#  # long range since otherwise it'd defeat the point of a handheld radio independent of telecomms
+#  longRange: true
 
 - type: radioChannel
   id: Freelance
@@ -140,4 +149,22 @@
   frequency: 1984
   color: "#f6ce64"
   # long range since otherwise it'd defeat the point of a handheld radio independent of telecomms
+  longRange: true
+
+- type: radioChannel
+  id: Xenoborg
+  name: chat-radio-xenoborg
+  keycode: 'x'
+  frequency: 2002
+  color: "#2288ff"
+  # long range since I don't wanna make a special xenoborg telecomm server
+  longRange: true
+
+- type: radioChannel
+  id: Mothership
+  name: chat-radio-mothership
+  keycode: 'z'
+  frequency: 2003
+  color: "#ff2222"
+  # long range since I don't wanna make a special xenoborg telecomm server
   longRange: true

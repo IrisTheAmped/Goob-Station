@@ -14,6 +14,9 @@ namespace Content.Goobstation.Shared.Devil.Condemned;
 /// Marks an entity as having sold their soul.
 /// When you die, do NOT collect 200, do NOT pass go. Go directly to hell
 /// </summary>
+/// <remarks>
+/// This should *really* be two components.
+/// </remarks>
 [RegisterComponent]
 public sealed partial class CondemnedComponent : Component
 {
@@ -70,6 +73,12 @@ public sealed partial class CondemnedComponent : Component
     /// </summary>
     [DataField]
     public bool FreezeDuringCondemnation;
+
+    /// <summary>
+    /// If true, scrambles the targets DNA after banishing them.
+    /// </summary>
+    [DataField]
+    public bool ScrambleAfterBanish = true;
 
     /// <summary>
     /// Should this entity be banished (sent to limbo for several minutes) or should they just be deleted?
